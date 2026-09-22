@@ -1,0 +1,10 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Public reads for published content via Admin SDK only recommended.
+    // Client SDK writes are denied — all mutations go through Next.js Admin API.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
