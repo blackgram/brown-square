@@ -417,7 +417,7 @@ export default function THIPClient() {
                     disabled={pending}
                     className="w-max bg-transparent disabled:opacity-50 md:col-span-2"
                   >
-                    {pending ? "Submitting…" : "Submit →"}
+                    {pending ? "Submitting…" : "Submit →︎"}
                   </Button>
                   <div
                     className="min-h-5 text-xs leading-relaxed md:col-span-2"

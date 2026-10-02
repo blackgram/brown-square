@@ -39,7 +39,7 @@ export function PostCard({ post }: { post: Post }) {
               aria-hidden
               className="transition-transform duration-300 group-hover:translate-x-0.5"
             >
-              ↗
+              ↗︎
             </span>
           </span>
           <span className="text-[11px] uppercase tracking-[0.12em] text-muted">

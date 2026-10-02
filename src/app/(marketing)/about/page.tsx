@@ -93,7 +93,7 @@ export default function AboutPage() {
       <FinalCta
         title="Build from culture, not from elsewhere."
         href="/contact"
-        label="Get in touch ↗"
+        label="Get in touch ↗︎"
       />
     </>
   );

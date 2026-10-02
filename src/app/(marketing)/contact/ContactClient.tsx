@@ -93,7 +93,7 @@ export default function ContactClient() {
             disabled={pending}
             className="w-max bg-transparent disabled:opacity-50"
           >
-            {pending ? "Sending…" : "Send message ↗"}
+            {pending ? "Sending…" : "Send message ↗︎"}
           </Button>
           <div className="min-h-5 text-xs leading-relaxed" role="status">
             {status}

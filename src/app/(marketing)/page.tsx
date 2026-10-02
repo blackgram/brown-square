@@ -38,7 +38,7 @@ export default async function HomePage() {
               worldwide.
             </p>
             <Button href="/services">
-              Our services <span>↗</span>
+              Our services <span>↗︎</span>
             </Button>
           </StaggerItem>
         </Stagger>
@@ -108,7 +108,7 @@ export default async function HomePage() {
                   {service.summary}
                 </p>
                 <span className="text-[22px] max-md:col-start-3 max-md:row-start-1">
-                  ↗
+                  ↗︎
                 </span>
               </StaggerItem>
             ))}
@@ -139,7 +139,7 @@ export default async function HomePage() {
               href="/insight"
               className="border-cream text-cream hover:bg-cream hover:text-ink"
             >
-              Enter One Story World ↗
+              Enter One Story World ↗︎
             </Button>
           </div>
 
@@ -210,7 +210,7 @@ export default async function HomePage() {
             <h2 className="max-w-[900px] font-display text-[clamp(50px,6vw,90px)] font-normal leading-[0.92] tracking-[-0.055em]">
               Let&apos;s build something that moves people.
             </h2>
-            <Button href="/contact">Start a conversation ↗</Button>
+            <Button href="/contact">Start a conversation ↗︎</Button>
           </Reveal>
         </Shell>
       </Reveal>

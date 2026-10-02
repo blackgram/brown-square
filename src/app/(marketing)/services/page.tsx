@@ -94,7 +94,7 @@ export default function ServicesPage() {
       <FinalCta
         title="Tell us what you're building, or protecting."
         href="/contact"
-        label="Start a conversation ↗"
+        label="Start a conversation ↗︎"
       />
     </>
   );

@@ -43,7 +43,7 @@ export default async function OneStoryWorldPostPage({ params }: Props) {
           href="/insight"
           className="text-[11px] uppercase tracking-[0.12em] text-muted hover:text-ink"
         >
-          ← Insight
+          ←︎ Insight
         </Link>
         <Image
           src="/onestoryworldlogo.png"

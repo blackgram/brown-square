@@ -23,7 +23,7 @@ export const navItems: NavItem[] = [
   // { href: "/store", label: "Store" },
   { href: "/insight", label: "Insight" },
   { href: "/thip", label: "THIP" },
-  { href: "/contact", label: "Get in touch ↗", cta: true },
+  { href: "/contact", label: "Get in touch ↗︎", cta: true },
 ];
 
 export const footerLinks: NavItem[] = [
