@@ -40,14 +40,14 @@ export default async function OneStoryWorldPostPage({ params }: Props) {
     <Shell className="py-10 md:py-14">
       <Reveal immediate className="flex items-center justify-between gap-6">
         <Link
-          href="/onestoryworld"
+          href="/insight"
           className="text-[11px] uppercase tracking-[0.12em] text-muted hover:text-ink"
         >
-          ← One Story World
+          ← Insight
         </Link>
         <Image
           src="/onestoryworldlogo.png"
-          alt="One Story World"
+          alt="Insight"
           width={280}
           height={56}
           className="h-9 w-auto"

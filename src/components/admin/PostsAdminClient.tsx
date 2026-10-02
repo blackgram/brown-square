@@ -248,7 +248,7 @@ export function PostsAdminClient() {
             </div>
             <div className="flex gap-3 text-sm">
               <Link
-                href={`/onestoryworld/${post.slug}`}
+                href={`/insight/${post.slug}`}
                 className="text-muted hover:text-ink"
               >
                 View

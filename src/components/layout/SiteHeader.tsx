@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 import { navItems, site } from "@/content/site";
 import { Shell } from "@/components/ui/Shell";
-import { CartButton } from "@/components/store/CartButton";
+// import { CartButton } from "@/components/store/CartButton";
 
 export function SiteHeader() {
   const pathname = usePathname();
@@ -43,7 +43,7 @@ export function SiteHeader() {
             </small>
           </Link>
 
-          <nav className="flex items-center gap-7 text-[13px] max-md:hidden">
+          <nav className="hidden items-center gap-4 text-[13px] lg:flex xl:gap-7">
             {navItems.map((item) => {
               const active =
                 item.href === "/"
@@ -54,7 +54,7 @@ export function SiteHeader() {
                   <Link
                     key={item.href}
                     href={item.href}
-                    className="inline-flex items-center gap-4 border border-ink px-[17px] py-3 transition-colors duration-200 hover:bg-ink hover:text-paper"
+                    className="inline-flex items-center gap-4 whitespace-nowrap border border-ink px-[17px] py-3 transition-colors duration-200 hover:bg-ink hover:text-paper"
                   >
                     {item.label}
                   </Link>
@@ -66,19 +66,19 @@ export function SiteHeader() {
                   href={item.href}
                   className={
                     active
-                      ? "font-bold text-accent"
-                      : "hover:opacity-70"
+                      ? "whitespace-nowrap font-bold text-accent"
+                      : "whitespace-nowrap hover:opacity-70"
                   }
                 >
                   {item.label}
                 </Link>
               );
             })}
-            <CartButton />
+            {/* <CartButton /> */}
           </nav>
 
-          <div className="hidden items-center gap-4 max-md:flex">
-            <CartButton />
+          <div className="flex items-center gap-4 lg:hidden">
+            {/* <CartButton /> */}
             <button
               type="button"
               className="border-0 bg-transparent text-xs uppercase tracking-[0.12em]"
@@ -92,7 +92,7 @@ export function SiteHeader() {
       </header>
 
       {menuOpen ? (
-        <div className="fixed inset-x-0 bottom-0 top-[78px] z-[19] flex flex-col gap-2 bg-cream px-4 py-[45px] md:hidden">
+        <div className="fixed inset-x-0 bottom-0 top-[78px] z-[19] flex flex-col gap-1 overflow-y-auto bg-cream px-4 py-8 sm:gap-2 sm:py-[45px] lg:hidden">
           {navItems.map((item) => {
             const active =
               item.href === "/"
@@ -102,7 +102,7 @@ export function SiteHeader() {
               <Link
                 key={item.href}
                 href={item.href}
-                className={`border-b border-line py-2 font-display text-[44px] tracking-[-0.05em] ${
+                className={`border-b border-line py-2 font-display text-[32px] tracking-[-0.05em] sm:text-[38px] md:text-[44px] ${
                   active ? "font-bold text-accent" : ""
                 }`}
                 onClick={() => setMenuOpen(false)}

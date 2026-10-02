@@ -19,7 +19,7 @@ export default function AboutPage() {
         <PageIntro
           eyebrow="About BrownSquare"
           title="A human-led firm built for African realities."
-          lead="BrownSquare Consult & Insight is a human-led creative thinking and design firm, powered by technology, serving brands, public figures, and some of Nollywood's largest releases."
+          lead="BrownSquare Insight is a human-led creative thinking and design firm, powered by technology, serving brands, public figures, and some of Nollywood's largest releases."
         />
       </Shell>
 

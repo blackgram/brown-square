@@ -2,6 +2,7 @@ export const ADMIN_PERMISSIONS = [
   "editor",
   "product_manager",
   "site_manager",
+  "thip_manager",
 ] as const;
 
 export type AdminPermission = (typeof ADMIN_PERMISSIONS)[number];

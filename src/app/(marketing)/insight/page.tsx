@@ -18,14 +18,15 @@ export default async function OneStoryWorldPage() {
     <Shell className="py-10 md:py-14">
       <Stagger immediate>
         <StaggerItem>
-          <Image
+          {/* <Image
             src="/onestoryworldlogo.png"
             alt="One Story World"
             width={420}
             height={84}
             className="h-12 w-auto md:h-14"
             priority
-          />
+          /> */}
+          <div className="text-2xl">Insight</div>
         </StaggerItem>
         <StaggerItem>
           <h1 className="mt-6 font-display text-[clamp(52px,7vw,100px)] font-normal leading-[0.88] tracking-[-0.055em]">

@@ -17,17 +17,37 @@ export default async function AdminLayout({
   return (
     <div className="min-h-full bg-[#f7f5f1] text-ink">
       <header className="border-b border-line bg-paper">
-        <div className="mx-auto flex w-[min(1200px,calc(100%-32px))] items-center justify-between gap-6 py-4">
-          <div className="flex items-center gap-6">
-            <Link href="/admin" className="text-sm font-semibold tracking-[-0.03em]">
+        <div className="mx-auto flex w-[min(1200px,calc(100%-32px))] flex-col gap-3 py-4 md:flex-row md:items-center md:justify-between md:gap-6">
+          <div className="flex items-center justify-between gap-6 md:justify-start">
+            <Link href="/admin" className="shrink-0 text-sm font-semibold tracking-[-0.03em]">
               BrownSquare Admin
             </Link>
-            {user ? <AdminNav user={user} /> : null}
+            <div className="flex items-center gap-4 text-sm md:hidden">
+              {user ? (
+                <>
+                  <Link href="/admin/account" className="text-muted hover:text-ink">
+                    Account
+                  </Link>
+                  <AdminSignOut />
+                </>
+              ) : (
+                <Link href="/admin/login" className="hover:opacity-70">
+                  Sign in
+                </Link>
+              )}
+              <Link href="/" className="text-muted hover:text-ink">
+                View site
+              </Link>
+            </div>
           </div>
-          <div className="flex items-center gap-4 text-sm">
+          {user ? <AdminNav user={user} /> : null}
+          <div className="hidden items-center gap-4 text-sm md:flex">
             {user ? (
               <>
-                <span className="text-muted max-md:hidden">{user.email}</span>
+                <span className="text-muted">{user.email}</span>
+                <Link href="/admin/account" className="text-muted hover:text-ink">
+                  Account
+                </Link>
                 <AdminSignOut />
               </>
             ) : (

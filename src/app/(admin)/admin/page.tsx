@@ -31,6 +31,12 @@ export default async function AdminDashboardPage() {
       show: can(user, "site_manager"),
     },
     {
+      href: "/admin/thip",
+      title: "THIP Waitlist",
+      body: "Review registrations for The Human Intelligence Project.",
+      show: can(user, "thip_manager"),
+    },
+    {
       href: "/admin/users",
       title: "Users",
       body: "Create admins and assign permissions.",

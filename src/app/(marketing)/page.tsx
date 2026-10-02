@@ -59,11 +59,12 @@ export default async function HomePage() {
         <div className="grid grid-cols-2 max-md:grid-cols-1">
           <div className="relative min-h-[420px] overflow-hidden max-md:min-h-[280px] max-md:order-2">
             <Image
-              src="/home/home-culture.jpg"
+              src="/home/brownsquare.jpg"
               alt="A warm gathering in conversation around a shared table"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"
               className="object-cover"
+              loading="eager"
             />
           </div>
           <div className="flex flex-col justify-center px-8 py-16 max-md:px-4 max-md:py-12 md:px-16 lg:px-20">
@@ -135,7 +136,7 @@ export default async function HomePage() {
               </p>
             </div>
             <Button
-              href="/onestoryworld"
+              href="/insight"
               className="border-cream text-cream hover:bg-cream hover:text-ink"
             >
               Enter One Story World ↗
@@ -146,7 +147,7 @@ export default async function HomePage() {
             {stories.map((post) => (
               <StaggerItem key={post.slug}>
                 <Link
-                  href={`/onestoryworld/${post.slug}`}
+                  href={`/insight/${post.slug}`}
                   className="group block border border-white/15 transition-colors hover:border-white/35"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-ink">
