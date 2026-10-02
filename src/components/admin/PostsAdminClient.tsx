@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { FormEvent, useEffect, useState } from "react";
 import type { Post } from "@/content/posts";
@@ -11,6 +12,7 @@ export function PostsAdminClient() {
   const [error, setError] = useState<string | null>(null);
   const [editing, setEditing] = useState<AdminPost | null>(null);
   const [pending, setPending] = useState(false);
+  const [uploading, setUploading] = useState(false);
 
   async function load() {
     const res = await fetch("/api/admin/posts");
@@ -81,16 +83,22 @@ export function PostsAdminClient() {
   }
 
   async function onUpload(file: File) {
-    const form = new FormData();
-    form.set("folder", "posts");
-    form.set("file", file);
-    const res = await fetch("/api/admin/upload", { method: "POST", body: form });
-    const json = (await res.json()) as { url?: string; message?: string };
-    if (!res.ok || !json.url) {
-      setError(json.message || "Upload failed");
-      return;
+    setUploading(true);
+    setError(null);
+    try {
+      const form = new FormData();
+      form.set("folder", "posts");
+      form.set("file", file);
+      const res = await fetch("/api/admin/upload", { method: "POST", body: form });
+      const json = (await res.json()) as { url?: string; message?: string };
+      if (!res.ok || !json.url) {
+        setError(json.message || "Upload failed");
+        return;
+      }
+      setEditing((prev) => (prev ? { ...prev, image: json.url! } : prev));
+    } finally {
+      setUploading(false);
     }
-    setEditing((prev) => (prev ? { ...prev, image: json.url! } : prev));
   }
 
   return (
@@ -175,23 +183,40 @@ export function PostsAdminClient() {
               />
             </Field>
           </div>
-          <Field label="Cover image URL">
-            <input
-              value={editing.image}
-              onChange={(e) =>
-                setEditing({ ...editing, image: e.target.value })
-              }
-              className="w-full border-b border-ink bg-transparent py-2 outline-none"
-            />
+          <Field label="Cover image">
+            <div className="space-y-3">
+              {editing.image ? (
+                <div className="flex items-center gap-3">
+                  <Image
+                    src={editing.image}
+                    alt=""
+                    width={64}
+                    height={64}
+                    unoptimized
+                    className="h-16 w-16 border border-line object-cover"
+                  />
+                  <span className="break-all text-xs text-muted">
+                    {editing.image}
+                  </span>
+                </div>
+              ) : (
+                <p className="text-xs text-muted">No image uploaded yet.</p>
+              )}
+              <input
+                type="file"
+                accept="image/*"
+                disabled={uploading}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  if (file) void onUpload(file);
+                }}
+                className="text-sm disabled:opacity-50"
+              />
+              {uploading ? (
+                <p className="text-xs text-muted">Uploading…</p>
+              ) : null}
+            </div>
           </Field>
-          <input
-            type="file"
-            accept="image/*"
-            onChange={(e) => {
-              const file = e.target.files?.[0];
-              if (file) void onUpload(file);
-            }}
-          />
           <Field label="Body (paragraphs separated by blank lines)">
             <textarea
               value={editing.body.join("\n\n")}
