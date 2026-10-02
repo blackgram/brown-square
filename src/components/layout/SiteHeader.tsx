@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
@@ -36,11 +37,24 @@ export function SiteHeader() {
         }`}
       >
         <Shell className="flex h-[82px] items-center justify-between">
-          <Link href="/" className="text-[21px] font-semibold tracking-[-0.04em]">
-            {site.name}
-            <small className="mt-px block text-[9px] font-normal uppercase tracking-[0.16em]">
-              {site.tagline}
-            </small>
+          <Link
+            href="/"
+            className="flex items-center gap-3 text-[21px] font-semibold tracking-[-0.04em]"
+          >
+            <Image
+              src="/main-logo.png"
+              alt={site.name}
+              width={36}
+              height={36}
+              priority
+              className="h-9 w-9 shrink-0"
+            />
+            <span>
+              {site.name}
+              <small className="mt-px block text-[9px] font-normal uppercase tracking-[0.16em]">
+                {site.tagline}
+              </small>
+            </span>
           </Link>
 
           <nav className="hidden items-center gap-4 text-[13px] lg:flex xl:gap-7">
