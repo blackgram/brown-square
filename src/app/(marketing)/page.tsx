@@ -59,7 +59,7 @@ export default async function HomePage() {
         <div className="grid grid-cols-2 max-md:grid-cols-1">
           <div className="relative min-h-[420px] overflow-hidden max-md:min-h-[280px] max-md:order-2">
             <Image
-              src="/home/brownsquare.jpg"
+              src="/main-logo.png"
               alt="A warm gathering in conversation around a shared table"
               fill
               sizes="(max-width: 768px) 100vw, 50vw"

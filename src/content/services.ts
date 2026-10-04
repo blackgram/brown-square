@@ -105,20 +105,20 @@ export const audiences = [
   {
     tag: "Brands & institutions",
     title: "Strategic communications partners for organisations worldwide.",
-    image: "/home/home-organisations.jpg",
+    image: "/home/home-brands.jpg",
     imageAlt: "A modern boardroom overlooking the city at dusk",
   },
   {
     tag: "Public figures",
     title: "PR and talent management for some of Africa's biggest global stars.",
-    image: "/home/home-reputation.jpg",
+    image: "/home/brownsquare.jpg",
     imageAlt: "A speaker on stage under a warm spotlight",
   },
   {
     tag: "Film & entertainment",
     title:
       "Campaign support for some of Nollywood's largest theatrical releases.",
-    image: "/home/home-brands.jpg",
+    image: "/home/jenifa.jpg",
     imageAlt: "A creative team reviewing materials in a bright studio",
   },
 ] as const;

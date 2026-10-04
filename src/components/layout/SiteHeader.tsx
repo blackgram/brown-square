@@ -44,17 +44,19 @@ export function SiteHeader() {
             <Image
               src="/main-logo.png"
               alt={site.name}
-              width={36}
-              height={36}
+              width={50}
+              height={50}
               priority
-              className="h-9 w-9 shrink-0"
+              className="h-12 w-12 shrink-0"
             />
+            <div className="flex items-center gap-2">
             <span>
               {site.name}
+            </span>
               <small className="mt-px block text-[9px] font-normal uppercase tracking-[0.16em]">
                 {site.tagline}
               </small>
-            </span>
+            </div>
           </Link>
 
           <nav className="hidden items-center gap-4 text-[13px] lg:flex xl:gap-7">
@@ -95,11 +97,26 @@ export function SiteHeader() {
             {/* <CartButton /> */}
             <button
               type="button"
-              className="border-0 bg-transparent text-xs uppercase tracking-[0.12em]"
+              className="relative flex h-8 w-8 shrink-0 flex-col items-center justify-center gap-[6px] border-0 bg-transparent"
               aria-expanded={menuOpen}
+              aria-label={menuOpen ? "Close menu" : "Open menu"}
               onClick={() => setMenuOpen((o) => !o)}
             >
-              {menuOpen ? "Close" : "Menu"}
+              <span
+                className={`h-[2px] w-6 bg-ink transition-transform duration-200 ${
+                  menuOpen ? "translate-y-[8px] rotate-45" : ""
+                }`}
+              />
+              <span
+                className={`h-[2px] w-6 bg-ink transition-opacity duration-200 ${
+                  menuOpen ? "opacity-0" : "opacity-100"
+                }`}
+              />
+              <span
+                className={`h-[2px] w-6 bg-ink transition-transform duration-200 ${
+                  menuOpen ? "-translate-y-[8px] -rotate-45" : ""
+                }`}
+              />
             </button>
           </div>
         </Shell>

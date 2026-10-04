@@ -81,18 +81,17 @@ export default function THIPClient() {
       <Shell className="flex flex-col pt-10 pb-12 max-md:pt-8 max-md:pb-10">
         <Stagger immediate>
           <StaggerItem>
-            <Eyebrow>The Human Intelligence Project</Eyebrow>
+            <div className="text-4xl font-bold">The Human Intelligence Project</div>
           </StaggerItem>
           <StaggerItem>
-            <h1 className="mt-[35px] font-display text-[clamp(40px,6vw,80px)] font-normal leading-[0.8] tracking-[-0.055em]">
+            <h1 className="mt-[35px] font-display text-2xl font-normal">
               What happens when intelligence stops being something you know and
               becomes something you can use?
             </h1>
           </StaggerItem>
           <StaggerItem>
             <p className="mt-9 max-w-[720px] text-[19px] leading-[1.55]">
-              Welcome to The Human Intelligence Project. For the next couple of
-              months, we are going to explore one simple idea: How much of what we
+              How much of what we
               know actually survives real life?
             </p>
           </StaggerItem>
@@ -101,11 +100,20 @@ export default function THIPClient() {
 
       <Rule />
 
+      <Reveal as="section" className="border-y border-line bg-cream py-10 max-md:py-8">
+        <Shell className="flex flex-col items-center text-center">
+          <Eyebrow>Open call closes</Eyebrow>
+          <CountdownTimer target="2026-10-10T23:59:59" />
+        </Shell>
+      </Reveal>
+
+      <Rule />
+
       <Reveal as="section" className="py-16 max-md:py-12">
         <Shell>
           <Stagger>
             <StaggerItem>
-              <h2 className="font-display text-[clamp(52px,7vw,100px)] font-normal leading-[0.9] tracking-[-0.055em]">
+              <h2 className="font-display text-[clamp(27px,7vw,100px)] font-semibold leading-[0.9] tracking-[-0.055em]">
                 Open Call
               </h2>
             </StaggerItem>
@@ -181,7 +189,7 @@ export default function THIPClient() {
         </Shell>
       </Reveal>
 
-      <Reveal as="section" className="py-16 max-md:py-12">
+      {/* <Reveal as="section" className="py-16 max-md:py-12">
         <Shell>
           <Stagger>
             <StaggerItem>
@@ -206,7 +214,7 @@ export default function THIPClient() {
             </StaggerItem>
           </Stagger>
         </Shell>
-      </Reveal>
+      </Reveal> */}
 
       {/* Modal */}
       {modalOpen && (
@@ -462,6 +470,62 @@ function Field({
         {label}
       </label>
       {children}
+    </div>
+  );
+}
+
+function CountdownTimer({ target }: { target: string }) {
+  const [remaining, setRemaining] = useState<number | null>(null);
+
+  useEffect(() => {
+    const targetMs = new Date(target).getTime();
+    const tick = () => setRemaining(Math.max(0, targetMs - Date.now()));
+    tick();
+    const interval = setInterval(tick, 1000);
+    return () => clearInterval(interval);
+  }, [target]);
+
+  if (remaining === null) {
+    // avoids a 0 -> real value flash before the first client tick
+    return <div className="mt-6 h-18" aria-hidden />;
+  }
+
+  if (remaining <= 0) {
+    return (
+      <p className="mt-6 font-display text-[28px] leading-tight">
+        Open call has closed
+      </p>
+    );
+  }
+
+  const days = Math.floor(remaining / 86_400_000);
+  const hours = Math.floor((remaining / 3_600_000) % 24);
+  const minutes = Math.floor((remaining / 60_000) % 60);
+  const seconds = Math.floor((remaining / 1000) % 60);
+
+  const units = [
+    { label: "Days", value: days },
+    { label: "Hours", value: hours },
+    { label: "Minutes", value: minutes },
+    { label: "Seconds", value: seconds },
+  ];
+
+  return (
+    <div
+      className="mt-6 flex items-start gap-6 max-md:gap-4"
+      role="timer"
+      aria-live="off"
+    >
+      {units.map((unit) => (
+        <div key={unit.label} className="flex flex-col items-center">
+          <span className="font-display text-[clamp(32px,6vw,56px)] leading-none tabular-nums">
+            {String(unit.value).padStart(2, "0")}
+          </span>
+          <span className="mt-2 text-[11px] uppercase tracking-wider text-muted">
+            {unit.label}
+          </span>
+        </div>
+      ))}
     </div>
   );
 }
