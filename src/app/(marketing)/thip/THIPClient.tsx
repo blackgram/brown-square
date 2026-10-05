@@ -125,11 +125,18 @@ export default function THIPClient() {
               </p>
             </StaggerItem>
             <StaggerItem>
-              <p className="mt-4 max-w-[720px] text-[19px] leading-[1.55]">
-                There are things you can learn from books. Things you can learn
-                from experience. And then there are things you only understand
-                when you are placed in the room. We are interested in the third.
-              </p>
+              <ul className="mt-4 max-w-[720px] list-disc space-y-2 pl-5 text-[19px] leading-[1.55]">
+                <li>
+                  There are things you can learn from books.
+                </li>
+                <li>
+                  Things you can learn from experience.
+                </li>
+                <li>
+                  And then there are things you only understand when you sit with us in the square.
+                </li>
+              </ul>
+              <span className="font-bold py-4">We are interested in the third.</span>
             </StaggerItem>
             <StaggerItem>
               <p className="mt-4 max-w-[720px] text-[19px] leading-[1.55]">

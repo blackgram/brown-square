@@ -5,7 +5,7 @@ import type { Post } from "@/content/posts";
 export function PostCard({ post }: { post: Post }) {
   return (
     <Link
-      href={`/insight/${post.slug}`}
+      href={`/intelligence-journal/${post.slug}`}
       className="group flex h-full flex-col overflow-hidden border border-line bg-warm/50 transition-[background-color,border-color,transform] duration-300 hover:-translate-y-0.5 hover:border-accent/40 hover:bg-warm"
     >
       <div className="relative aspect-[16/10] overflow-hidden bg-warm">

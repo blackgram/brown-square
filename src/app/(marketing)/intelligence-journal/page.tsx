@@ -26,11 +26,12 @@ export default async function OneStoryWorldPage() {
             className="h-12 w-auto md:h-14"
             priority
           /> */}
-          <div className="text-2xl">Insight</div>
+          <div></div>
+          {/* <div className="text-2xl">Intelligence Journal</div> */}
         </StaggerItem>
         <StaggerItem>
           <h1 className="mt-6 font-display text-[clamp(52px,7vw,100px)] font-normal leading-[0.88] tracking-[-0.055em]">
-            Explaining the world one story at a time.
+            Intelligence Journal
           </h1>
         </StaggerItem>
       </Stagger>

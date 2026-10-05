@@ -273,7 +273,7 @@ export function PostsAdminClient() {
             </div>
             <div className="flex gap-3 text-sm">
               <Link
-                href={`/insight/${post.slug}`}
+                href={`/intelligence-journal/${post.slug}`}
                 className="text-muted hover:text-ink"
               >
                 View

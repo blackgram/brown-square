@@ -105,7 +105,7 @@ export const audiences = [
   {
     tag: "Brands & institutions",
     title: "Strategic communications partners for organisations worldwide.",
-    image: "/home/home-brands.jpg",
+    image: "/home/home-organisations.jpg",
     imageAlt: "A modern boardroom overlooking the city at dusk",
   },
   {

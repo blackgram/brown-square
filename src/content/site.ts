@@ -21,7 +21,7 @@ export const navItems: NavItem[] = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   // { href: "/store", label: "Store" },
-  { href: "/insight", label: "Insight" },
+  { href: "/intelligence-journal", label: "Intelligence Journal" },
   { href: "/thip", label: "THIP" },
   { href: "/contact", label: "Get in touch ↗︎", cta: true },
 ];
@@ -31,7 +31,7 @@ export const footerLinks: NavItem[] = [
   { href: "/about", label: "About" },
   { href: "/services", label: "Services" },
   // { href: "/store", label: "Store" },
-  { href: "/insight", label: "Insight" },
+  { href: "/intelligence-journal", label: "Intelligence Journal" },
   { href: "/thip", label: "THIP" },
   { href: "/contact", label: "Contact" },
 ];

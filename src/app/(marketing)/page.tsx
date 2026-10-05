@@ -136,7 +136,7 @@ export default async function HomePage() {
               </p>
             </div>
             <Button
-              href="/insight"
+              href="/intelligence-journal"
               className="border-cream text-cream hover:bg-cream hover:text-ink"
             >
               Enter One Story World ↗︎
@@ -147,7 +147,7 @@ export default async function HomePage() {
             {stories.map((post) => (
               <StaggerItem key={post.slug}>
                 <Link
-                  href={`/insight/${post.slug}`}
+                  href={`/intelligence-journal/${post.slug}`}
                   className="group block border border-white/15 transition-colors hover:border-white/35"
                 >
                   <div className="relative aspect-[16/10] overflow-hidden bg-ink">
