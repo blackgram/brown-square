@@ -81,7 +81,9 @@ export default function THIPClient() {
       <Shell className="flex flex-col pt-10 pb-12 max-md:pt-8 max-md:pb-10">
         <Stagger immediate>
           <StaggerItem>
-            <div className="text-4xl font-bold">The Human Intelligence Project</div>
+            <div className="text-4xl font-bold">
+              The Human Intelligence Project
+            </div>
           </StaggerItem>
           <StaggerItem>
             <h1 className="mt-[35px] font-display text-2xl font-normal">
@@ -90,9 +92,8 @@ export default function THIPClient() {
             </h1>
           </StaggerItem>
           <StaggerItem>
-            <p className="mt-9 max-w-[720px] text-[19px] leading-[1.55]">
-              How much of what we
-              know actually survives real life?
+            <p className="mt-9 max-w-[720px] text-[19px] leading-[1.55] font-bold">
+              How much of what we know actually survives real life?
             </p>
           </StaggerItem>
         </Stagger>
@@ -100,7 +101,10 @@ export default function THIPClient() {
 
       <Rule />
 
-      <Reveal as="section" className="border-y border-line bg-cream py-10 max-md:py-8">
+      <Reveal
+        as="section"
+        className="border-y border-line bg-cream py-10 max-md:py-8"
+      >
         <Shell className="flex flex-col items-center text-center">
           <Eyebrow>Open call closes</Eyebrow>
           <CountdownTimer target="2026-10-10T23:59:59" />
@@ -119,29 +123,29 @@ export default function THIPClient() {
             </StaggerItem>
             <StaggerItem>
               <p className="mt-6 max-w-[720px] text-[19px] leading-[1.55]">
-                We are bringing together people at different stages of their lives
-                and careers to take part in the first phase of The Human
+                We are bringing together people at different stages of their
+                lives and careers to take part in the first phase of The Human
                 Intelligence Project.
               </p>
             </StaggerItem>
             <StaggerItem>
               <ul className="mt-4 max-w-[720px] list-disc space-y-2 pl-5 text-[19px] leading-[1.55]">
+                <li>There are things you can learn from books.</li>
+                <li>Things you can learn from experience.</li>
                 <li>
-                  There are things you can learn from books.
-                </li>
-                <li>
-                  Things you can learn from experience.
-                </li>
-                <li>
-                  And then there are things you only understand when you sit with us in the square.
+                  And then there are things you only understand when you sit
+                  with us in the square.
                 </li>
               </ul>
-              <span className="font-bold py-4">We are interested in the third.</span>
+              <span className="font-bold py-4">
+                We are interested in the third.
+              </span>
             </StaggerItem>
             <StaggerItem>
               <p className="mt-4 max-w-[720px] text-[19px] leading-[1.55]">
-                We&apos;ll test ideas. Interrogate assumptions. Study decisions. And
-                put theory in situations where something actually has to happen.
+                We&apos;ll test ideas. Interrogate assumptions. Study decisions.
+                And put theory in situations where something actually has to
+                happen.
               </p>
             </StaggerItem>
           </Stagger>
@@ -159,9 +163,9 @@ export default function THIPClient() {
                 Private Sessions
               </h3>
               <p className="mt-4 text-sm leading-relaxed">
-                For public figures, CEOs and business owners. Closed-room sessions.
-                Case studies. Conversations. Real situations. Participants will not
-                be recorded.
+                For public figures, CEOs and business owners. Closed-room
+                sessions. Case studies. Conversations. Real situations.
+                Participants will not be recorded.
               </p>
               <button
                 onClick={() => openModal("private")}
@@ -178,9 +182,9 @@ export default function THIPClient() {
                 Open Session
               </h3>
               <p className="mt-4 text-sm leading-relaxed">
-                For emerging talents and creators. A more participatory experience
-                involving simulations, real-life scenarios and exercises. These
-                sessions will be documented.
+                For emerging talents and creators. A more participatory
+                experience involving simulations, real-life scenarios and
+                exercises. These sessions will be documented.
               </p>
               <button
                 onClick={() => openModal("open")}
@@ -235,7 +239,9 @@ export default function THIPClient() {
               <h2 className="font-display text-[32px] font-normal leading-tight">
                 Join the Waitlist
                 <small className="mt-1 block text-xs font-normal uppercase tracking-wider text-muted">
-                  {sessionType === "private" ? "Private Sessions" : "Open Session"}
+                  {sessionType === "private"
+                    ? "Private Sessions"
+                    : "Open Session"}
                 </small>
               </h2>
               <button
@@ -258,190 +264,193 @@ export default function THIPClient() {
                     provided contact.
                   </p>
                   <Link href="/" className="mt-10 inline-block">
-                    <Button className="w-max bg-transparent">Back to Home</Button>
+                    <Button className="w-max bg-transparent">
+                      Back to Home
+                    </Button>
                   </Link>
                 </Shell>
               ) : (
-              <Shell className="max-w-3xl py-16 max-md:py-12">
-                <form
-                  className="grid grid-cols-1 gap-x-10 gap-y-7 md:grid-cols-2"
-                  onSubmit={onSubmit}
-                >
-                  <div className="md:col-span-2">
-                    <p className="mb-6 text-[19px] leading-[1.55]">
-                      If this has made you curious, that&apos;s enough for now. Leave us
-                      a few details about yourself and we will be in touch.
-                    </p>
-                    <p className="mb-8 text-[14px] leading-[1.6] text-muted">
-                      Registration of interest closes 10th October 2026. The Human
-                      Intelligence Project is a paid experience. Joining the waitlist
-                      requires no payment or commitment. Full participation details,
-                      including dates, fees and what comes next, will be shared with
-                      waitlist members after registration closes.
-                    </p>
-                  </div>
+                <Shell className="max-w-3xl py-16 max-md:py-12">
+                  <form
+                    className="grid grid-cols-1 gap-x-10 gap-y-7 md:grid-cols-2"
+                    onSubmit={onSubmit}
+                  >
+                    <div className="md:col-span-2">
+                      <p className="mb-6 text-[19px] leading-[1.55]">
+                        Leave us a few details about yourself and we will be in
+                        touch.
+                      </p>
+                      <p className="mb-8 text-[14px] leading-[1.6] text-muted">
+                        Registration of interest closes 10th October 2026. The
+                        Human Intelligence Project is a paid experience. Joining
+                        the waitlist requires no payment or commitment. Full
+                        participation details, including dates, fees and what
+                        comes next, will be shared with waitlist members after
+                        registration closes.
+                      </p>
+                    </div>
 
-                  <Field label="Surname">
-                    <input
-                      name="surname"
-                      required
-                      className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
-                    />
-                  </Field>
-                  <Field label="Other Names">
-                    <input
-                      name="otherNames"
-                      required
-                      className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
-                    />
-                  </Field>
-                  <Field label="Email Address">
-                    <input
-                      name="email"
-                      type="email"
-                      required
-                      className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
-                    />
-                  </Field>
-                  <Field label="Phone Number / WhatsApp">
-                    <input
-                      name="phone"
-                      required
-                      className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
-                    />
-                  </Field>
-                  <Field label="Age Range">
-                    <select
-                      name="ageRange"
-                      required
-                      className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                    <Field label="Surname">
+                      <input
+                        name="surname"
+                        required
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field label="Other Names">
+                      <input
+                        name="otherNames"
+                        required
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field label="Email Address">
+                      <input
+                        name="email"
+                        type="email"
+                        required
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field label="Phone Number / WhatsApp">
+                      <input
+                        name="phone"
+                        required
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field label="Age Range">
+                      <select
+                        name="ageRange"
+                        required
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      >
+                        <option value="">Select...</option>
+                        <option value="18-24">18–24</option>
+                        <option value="25-34">25–34</option>
+                        <option value="35-44">35–44</option>
+                        <option value="45-54">45–54</option>
+                        <option value="55+">55+</option>
+                      </select>
+                    </Field>
+                    <Field label="Country">
+                      <input
+                        name="country"
+                        required
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field label="State / Region">
+                      <input
+                        name="stateRegion"
+                        required
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field label="City / Town">
+                      <input
+                        name="cityTown"
+                        required
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field label="What best describes you?">
+                      <select
+                        name="description"
+                        required
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      >
+                        <option value="">Select...</option>
+                        <option value="Public figure">Public figure</option>
+                        <option value="CEO or Founder">CEO or Founder</option>
+                        <option value="Business Owner">Business Owner</option>
+                        <option value="Emerging Talent">Emerging Talent</option>
+                        <option value="Creator">Creator</option>
+                        <option value="Other">Other</option>
+                      </select>
+                    </Field>
+                    <Field label="Industry / Area of specialisation">
+                      <input
+                        name="industry"
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field label="Highest level of education">
+                      <input
+                        name="education"
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field label="What did you study? (optional)">
+                      <input
+                        name="fieldOfStudy"
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field
+                      full
+                      label="How would you describe what you are currently building, doing or becoming? (Max 50)"
                     >
-                      <option value="">Select...</option>
-                      <option value="18-24">18–24</option>
-                      <option value="25-34">25–34</option>
-                      <option value="35-44">35–44</option>
-                      <option value="45-54">45–54</option>
-                      <option value="55+">55+</option>
-                    </select>
-                  </Field>
-                  <Field label="Country">
-                    <input
-                      name="country"
-                      required
-                      className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
-                    />
-                  </Field>
-                  <Field label="State / Region">
-                    <input
-                      name="stateRegion"
-                      required
-                      className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
-                    />
-                  </Field>
-                  <Field label="City / Town">
-                    <input
-                      name="cityTown"
-                      required
-                      className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
-                    />
-                  </Field>
-                  <Field label="What best describes you?">
-                    <select
-                      name="description"
-                      required
-                      className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      <textarea
+                        name="currentWork"
+                        maxLength={50}
+                        className="min-h-[80px] w-full resize-y border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field
+                      full
+                      label="What is one thing about people, influence, success or visibility that you wish you understood better?"
                     >
-                      <option value="">Select...</option>
-                      <option value="Public figure">Public figure</option>
-                      <option value="CEO or Founder">CEO or Founder</option>
-                      <option value="Business Owner">Business Owner</option>
-                      <option value="Emerging Talent">Emerging Talent</option>
-                      <option value="Creator">Creator</option>
-                      <option value="Other">Other</option>
-                    </select>
-                  </Field>
-                  <Field label="Industry / Area of specialisation">
-                    <input
-                      name="industry"
-                      className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
-                    />
-                  </Field>
-                  <Field label="Highest level of education">
-                    <input
-                      name="education"
-                      className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
-                    />
-                  </Field>
-                  <Field label="What did you study? (optional)">
-                    <input
-                      name="fieldOfStudy"
-                      className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
-                    />
-                  </Field>
-                  <Field
-                    full
-                    label="How would you describe what you are currently building, doing or becoming? (Max 100 words)"
-                  >
-                    <textarea
-                      name="currentWork"
-                      maxLength={100}
-                      className="min-h-[80px] w-full resize-y border-0 border-b border-ink bg-transparent py-3 outline-none"
-                    />
-                  </Field>
-                  <Field
-                    full
-                    label="What is one thing about people, influence, success or visibility that you wish you understood better?"
-                  >
-                    <textarea
-                      name="understanding"
-                      required
-                      className="min-h-[80px] w-full resize-y border-0 border-b border-ink bg-transparent py-3 outline-none"
-                    />
-                  </Field>
-                  <Field
-                    full
-                    label="Why does The Human Intelligence Project interest you? (Max 100 words)"
-                  >
-                    <textarea
-                      name="interest"
-                      maxLength={100}
-                      required
-                      className="min-h-[80px] w-full resize-y border-0 border-b border-ink bg-transparent py-3 outline-none"
-                    />
-                  </Field>
-                  <Field label="How did you hear about this project?">
-                    <input
-                      name="hearAbout"
-                      required
-                      className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
-                    />
-                  </Field>
-                  <Field label="Are you willing to participate in an in-person pilot session?">
-                    <select
-                      name="inPersonWilling"
-                      required
-                      className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      <textarea
+                        name="understanding"
+                        required
+                        className="min-h-[80px] w-full resize-y border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field
+                      full
+                      label="Why does The Human Intelligence Project interest you? (Max 50)"
                     >
-                      <option value="">Select...</option>
-                      <option value="Yes">Yes</option>
-                      <option value="No">No</option>
-                    </select>
-                  </Field>
-                  <Button
-                    type="submit"
-                    disabled={pending}
-                    className="w-max bg-transparent disabled:opacity-50 md:col-span-2"
-                  >
-                    {pending ? "Submitting…" : "Submit →︎"}
-                  </Button>
-                  <div
-                    className="min-h-5 text-xs leading-relaxed md:col-span-2"
-                    role="status"
-                  >
-                    {status}
-                  </div>
-                </form>
-              </Shell>
+                      <textarea
+                        name="interest"
+                        maxLength={50}
+                        required
+                        className="min-h-[80px] w-full resize-y border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field label="How did you hear about this project?">
+                      <input
+                        name="hearAbout"
+                        required
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field label="Are you willing to participate in an in-person pilot session?">
+                      <select
+                        name="inPersonWilling"
+                        required
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      >
+                        <option value="">Select...</option>
+                        <option value="Yes">Yes</option>
+                        <option value="No">No</option>
+                      </select>
+                    </Field>
+                    <Button
+                      type="submit"
+                      disabled={pending}
+                      className="w-max bg-transparent disabled:opacity-50 md:col-span-2"
+                    >
+                      {pending ? "Submitting…" : "Submit →︎"}
+                    </Button>
+                    <div
+                      className="min-h-5 text-xs leading-relaxed md:col-span-2"
+                      role="status"
+                    >
+                      {status}
+                    </div>
+                  </form>
+                </Shell>
               )}
             </div>
           </div>
