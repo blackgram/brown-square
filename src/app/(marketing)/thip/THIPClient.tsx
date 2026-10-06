@@ -107,7 +107,7 @@ export default function THIPClient() {
       >
         <Shell className="flex flex-col items-center text-center">
           <Eyebrow>Open call closes</Eyebrow>
-          <CountdownTimer target="2026-10-10T23:59:59" />
+          <CountdownTimer target="2026-10-19T11:00:00" />
         </Shell>
       </Reveal>
 
@@ -174,7 +174,7 @@ export default function THIPClient() {
                 Join the waitlist
               </button>
               <p className="mt-4 text-xs text-cream/60">
-                Open call closes 10th October 2026
+                Open call closes 19th October 2026. 11am.
               </p>
             </StaggerItem>
             <StaggerItem className="min-h-[240px] border-white/20 py-[30px] pr-[30px] max-md:min-h-0 max-md:border-r-0 max-md:border-b max-md:py-7 max-md:pr-0">
@@ -193,7 +193,7 @@ export default function THIPClient() {
                 Join the waitlist
               </button>
               <p className="mt-4 text-xs text-cream/60">
-                Open call closes 10th October 2026
+                Open call closes 19th October 2026. 11am.
               </p>
             </StaggerItem>
           </Stagger>
@@ -281,7 +281,7 @@ export default function THIPClient() {
                         touch.
                       </p>
                       <p className="mb-8 text-[14px] leading-[1.6] text-muted">
-                        Registration of interest closes 10th October 2026. The
+                        Registration of interest closes 19th October 2026. The
                         Human Intelligence Project is a paid experience. Joining
                         the waitlist requires no payment or commitment. Full
                         participation details, including dates, fees and what
