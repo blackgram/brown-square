@@ -98,13 +98,13 @@ export default async function HomePage() {
             {services.map((service) => (
               <StaggerItem
                 key={service.id}
-                className="grid grid-cols-[70px_1fr_1fr_40px] items-start gap-6 border-b border-line py-[27px] max-md:grid-cols-[45px_1fr_25px]"
+                className="grid grid-cols-[70px_1fr_1fr_40px] items-start gap-6 border-b border-line py-[27px] max-md:grid-cols-1 max-md:justify-items-center max-md:gap-2 max-md:text-center"
               >
                 <span className="text-[11px] text-muted">{service.num}</span>
                 <h3 className="font-display text-[27px] font-normal tracking-[-0.055em]">
                   {service.title}
                 </h3>
-                <p className="m-0 max-w-[520px] leading-[1.55] text-[#49463f] max-md:col-span-2 max-md:col-start-2">
+                <p className="m-0 max-w-[520px] leading-[1.55] text-[#49463f]">
                   {service.summary}
                 </p>
                 {/* <span className="text-[22px] max-md:col-start-3 max-md:row-start-1">
