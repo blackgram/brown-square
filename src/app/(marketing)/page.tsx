@@ -107,9 +107,9 @@ export default async function HomePage() {
                 <p className="m-0 max-w-[520px] leading-[1.55] text-[#49463f] max-md:col-span-2 max-md:col-start-2">
                   {service.summary}
                 </p>
-                <span className="text-[22px] max-md:col-start-3 max-md:row-start-1">
+                {/* <span className="text-[22px] max-md:col-start-3 max-md:row-start-1">
                   ↗︎
-                </span>
+                </span> */}
               </StaggerItem>
             ))}
           </Stagger>
@@ -120,26 +120,27 @@ export default async function HomePage() {
         <Shell>
           <div className="grid grid-cols-[1fr_auto] items-end gap-10 max-md:grid-cols-1 max-md:gap-8">
             <div>
-              <Image
+              {/* <Image
                 src="/onestoryworldlogo.png"
                 alt="One Story World"
                 width={360}
                 height={72}
                 className="h-12 w-auto md:h-14"
-              />
-              <h2 className="mt-8 max-w-[800px] font-display text-[clamp(40px,5vw,72px)] font-normal leading-[0.95] tracking-[-0.05em]">
+              /> */}
+              <h1 className="mt-8 text-white text-2xl">The Intelligence Journal</h1>
+              {/* <h2 className="mt-8 max-w-[800px] font-display text-[clamp(40px,5vw,72px)] font-normal leading-[0.95] tracking-[-0.05em]">
                 Explaining the world one story at a time.
-              </h2>
+              </h2> */}
               <p className="mt-6 max-w-[540px] text-[17px] leading-[1.55] text-[#bbb6ac]">
                 Culture, reputation, and the work — told from the inside. Read
-                the latest from One Story World.
+                the latest from The Intelligence Journal.
               </p>
             </div>
             <Button
               href="/intelligence-journal"
               className="border-cream text-cream hover:bg-cream hover:text-ink"
             >
-              Enter One Story World ↗︎
+              Enter The Intelligence Journal ↗︎
             </Button>
           </div>
 
@@ -183,7 +184,7 @@ export default async function HomePage() {
           <Stagger className="grid grid-cols-3 gap-5 max-md:grid-cols-1">
             {audiences.map((card) => (
               <StaggerItem key={card.tag} className="group flex flex-col">
-                <div className="relative aspect-[4/3] overflow-hidden bg-warm">
+                <div className="relative aspect-4/3 overflow-hidden bg-warm">
                   <Image
                     src={card.image}
                     alt={card.imageAlt}
@@ -207,7 +208,7 @@ export default async function HomePage() {
             delay={0.1}
             className="grid grid-cols-[1fr_auto] items-end gap-10 py-14 max-md:grid-cols-1 max-md:gap-9 max-md:py-12"
           >
-            <h2 className="max-w-[900px] font-display text-[clamp(50px,6vw,90px)] font-normal leading-[0.92] tracking-[-0.055em]">
+            <h2 className="max-w-225 font-display text-[clamp(50px,6vw,90px)] font-normal leading-[0.92] tracking-[-0.055em]">
               Let&apos;s build something that moves people.
             </h2>
             <Button href="/contact">Start a conversation ↗︎</Button>
