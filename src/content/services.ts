@@ -111,7 +111,7 @@ export const audiences = [
   {
     tag: "Public figures",
     title: "PR and talent management for some of Africa's biggest global stars.",
-    image: "/home/brownsquare.jpg",
+    image: "/main-logo.png",
     imageAlt: "A speaker on stage under a warm spotlight",
   },
   {
