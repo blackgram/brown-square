@@ -124,8 +124,7 @@ export default function THIPClient() {
             <StaggerItem>
               <p className="mt-6 max-w-[720px] text-[19px] leading-[1.55]">
                 We are bringing together people at different stages of their
-                lives and careers to take part in the first phase of The Human
-                Intelligence Project.
+                lives and careers to take part in <span className="font-[500]">The Human Intelligence Project</span>.
               </p>
             </StaggerItem>
             <StaggerItem>
@@ -137,8 +136,10 @@ export default function THIPClient() {
                   with us in the square.
                 </li>
               </ul>
-              <span className="font-bold py-4">
-                We are interested in the third.
+            </StaggerItem>
+            <StaggerItem className="mt-5">
+              <span className="font-bold text-[19px] leading-[1.55]">
+                We are interested in the third!
               </span>
             </StaggerItem>
             <StaggerItem>
