@@ -107,7 +107,7 @@ export default function THIPClient() {
       >
         <Shell className="flex flex-col items-center text-center">
           <Eyebrow>Open call closes</Eyebrow>
-          <CountdownTimer target="2026-10-19T11:00:00" />
+          <CountdownTimer target="2026-10-21T23:59:59" />
         </Shell>
       </Reveal>
 
@@ -174,7 +174,7 @@ export default function THIPClient() {
                 Join the waitlist
               </button>
               <p className="mt-4 text-xs text-cream/60">
-                Open call closes 19th October 2026. 11am.
+                Open call closes 21st October 2026.
               </p>
             </StaggerItem>
             <StaggerItem className="min-h-[240px] border-white/20 py-[30px] pr-[30px] max-md:min-h-0 max-md:border-r-0 max-md:border-b max-md:py-7 max-md:pr-0">
@@ -193,7 +193,7 @@ export default function THIPClient() {
                 Join the waitlist
               </button>
               <p className="mt-4 text-xs text-cream/60">
-                Open call closes 19th October 2026. 11am.
+                Open call closes 21st October 2026.
               </p>
             </StaggerItem>
           </Stagger>
@@ -276,12 +276,12 @@ export default function THIPClient() {
                     onSubmit={onSubmit}
                   >
                     <div className="md:col-span-2">
-                      <p className="mb-6 text-[19px] leading-[1.55]">
+                      <p className="mb-6 text-[19px] leading-[1.55] font-[600]">
                         Leave us a few details about yourself and we will be in
                         touch.
                       </p>
                       <p className="mb-8 text-[14px] leading-[1.6] text-muted">
-                        Registration of interest closes 19th October 2026. The
+                        Registration of interest closes 21 October 2026. The
                         Human Intelligence Project is a paid experience. Joining
                         the waitlist requires no payment or commitment. Full
                         participation details, including dates, fees and what
@@ -482,7 +482,7 @@ function Field({
 }) {
   return (
     <div className={`w-full ${full ? "md:col-span-2" : ""}`}>
-      <label className="block text-xs uppercase tracking-wider text-muted">
+      <label className="block text-xs uppercase tracking-wider text-muted font-[700]">
         {label}
       </label>
       {children}
