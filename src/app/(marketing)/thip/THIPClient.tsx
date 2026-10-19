@@ -100,15 +100,15 @@ export default function THIPClient() {
           <Stagger className="mt-[70px] grid grid-cols-2 gap-[60px] border-t border-white/20 max-md:grid-cols-1">
             <StaggerItem className="min-h-[240px] border-white/20 py-[30px] pr-[30px] max-md:min-h-0 max-md:border-r-0 max-md:border-b max-md:py-7 max-md:pr-0">
               <h3 className="font-display text-[28px] font-normal leading-tight">
-                Private Sessions
+                Open Session
               </h3>
               <p className="mt-4 text-sm leading-relaxed">
-                For public figures, CEOs and business owners. Closed-room
-                sessions. Case studies. Conversations. Real situations.
-                Participants will not be recorded.
+                For emerging talents and creators. A more participatory
+                experience involving simulations, real-life scenarios and
+                exercises. These sessions will be documented.
               </p>
               <a
-                href={SESSION_LINKS.private}
+                href={SESSION_LINKS.open}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={sessionLinkClass}
@@ -121,15 +121,15 @@ export default function THIPClient() {
             </StaggerItem>
             <StaggerItem className="min-h-[240px] border-white/20 py-[30px] pr-[30px] max-md:min-h-0 max-md:border-r-0 max-md:border-b max-md:py-7 max-md:pr-0">
               <h3 className="font-display text-[28px] font-normal leading-tight">
-                Open Session
+                Private Sessions
               </h3>
               <p className="mt-4 text-sm leading-relaxed">
-                For emerging talents and creators. A more participatory
-                experience involving simulations, real-life scenarios and
-                exercises. These sessions will be documented.
+                For public figures, CEOs and business owners. Closed-room
+                sessions. Case studies. Conversations. Real situations.
+                Participants will not be recorded.
               </p>
               <a
-                href={SESSION_LINKS.open}
+                href={SESSION_LINKS.private}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={sessionLinkClass}
