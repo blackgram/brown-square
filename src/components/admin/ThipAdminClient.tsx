@@ -4,28 +4,36 @@ import { useEffect, useMemo, useState } from "react";
 
 type WaitlistEntry = {
   id: string;
-  sessionType: "private" | "open";
-  surname: string;
-  otherNames: string;
+  sessionType: "private" | "open" | "think-lab";
+  name?: string;
+  surname?: string;
+  otherNames?: string;
   email: string;
-  phone: string;
-  ageRange: string | null;
-  country: string | null;
-  stateRegion: string | null;
-  cityTown: string | null;
-  description: string | null;
-  industry: string | null;
-  education: string | null;
-  fieldOfStudy: string | null;
-  currentWork: string | null;
-  understanding: string | null;
-  interest: string | null;
-  hearAbout: string | null;
-  inPersonWilling: string | null;
+  phone?: string;
+  ageRange?: string | null;
+  country?: string | null;
+  stateRegion?: string | null;
+  cityTown?: string | null;
+  description?: string | null;
+  industry?: string | null;
+  education?: string | null;
+  fieldOfStudy?: string | null;
+  currentWork?: string | null;
+  understanding?: string | null;
+  curiosity?: string | null;
+  interest?: string | null;
+  explore?: string | null;
+  hearAbout?: string | null;
+  inPersonWilling?: string | null;
   createdAt: string;
 };
 
-type Filter = "all" | "private" | "open";
+type Filter = "all" | "private" | "open" | "think-lab";
+
+function displayName(entry: WaitlistEntry) {
+  if (entry.name?.trim()) return entry.name.trim();
+  return [entry.otherNames, entry.surname].filter(Boolean).join(" ").trim() || "Untitled";
+}
 
 export function ThipAdminClient() {
   const [entries, setEntries] = useState<WaitlistEntry[]>([]);
@@ -55,7 +63,7 @@ export function ThipAdminClient() {
   }, []);
 
   async function onDelete(id: string) {
-    if (!confirm("Remove this entry from the waitlist?")) return;
+    if (!confirm("Remove this submission?")) return;
     const res = await fetch(`/api/admin/thip?id=${encodeURIComponent(id)}`, {
       method: "DELETE",
     });
@@ -78,6 +86,7 @@ export function ThipAdminClient() {
       all: entries.length,
       private: entries.filter((e) => e.sessionType === "private").length,
       open: entries.filter((e) => e.sessionType === "open").length,
+      "think-lab": entries.filter((e) => e.sessionType === "think-lab").length,
     }),
     [entries],
   );
@@ -89,6 +98,7 @@ export function ThipAdminClient() {
           {(
             [
               { key: "all", label: `All (${counts.all})` },
+              { key: "think-lab", label: `Think Lab (${counts["think-lab"]})` },
               { key: "private", label: `Private (${counts.private})` },
               { key: "open", label: `Open (${counts.open})` },
             ] as const
@@ -120,7 +130,7 @@ export function ThipAdminClient() {
       {loading ? <p className="text-sm text-muted">Loading…</p> : null}
 
       {!loading && filtered.length === 0 ? (
-        <p className="text-sm text-muted">No waitlist entries yet.</p>
+        <p className="text-sm text-muted">No submissions yet.</p>
       ) : null}
 
       <div className="divide-y divide-line border border-line bg-paper">
@@ -131,13 +141,16 @@ export function ThipAdminClient() {
               <div className="flex flex-wrap items-center justify-between gap-4">
                 <div>
                   <p className="font-medium">
-                    {entry.otherNames} {entry.surname}
+                    {displayName(entry)}
                     <span className="ml-2 border border-line px-2 py-0.5 text-[10px] uppercase tracking-wider text-muted">
-                      {entry.sessionType}
+                      {entry.sessionType === "think-lab"
+                        ? "Think Lab"
+                        : entry.sessionType}
                     </span>
                   </p>
                   <p className="text-xs text-muted">
-                    {entry.email} · {entry.phone} ·{" "}
+                    {entry.email}
+                    {entry.phone ? ` · ${entry.phone}` : ""} ·{" "}
                     {new Date(entry.createdAt).toLocaleString()}
                   </p>
                 </div>
@@ -161,34 +174,59 @@ export function ThipAdminClient() {
 
               {expanded ? (
                 <div className="mt-4 grid gap-3 border-t border-line pt-4 text-sm sm:grid-cols-2">
-                  <Detail label="Age range" value={entry.ageRange} />
-                  <Detail label="Country" value={entry.country} />
-                  <Detail label="State / Region" value={entry.stateRegion} />
-                  <Detail label="City / Town" value={entry.cityTown} />
-                  <Detail label="Describes them" value={entry.description} />
-                  <Detail label="Industry" value={entry.industry} />
-                  <Detail label="Education" value={entry.education} />
-                  <Detail label="Field of study" value={entry.fieldOfStudy} />
-                  <Detail
-                    label="In-person willing"
-                    value={entry.inPersonWilling}
-                  />
-                  <Detail label="Heard about via" value={entry.hearAbout} />
-                  <Detail
-                    full
-                    label="Currently building / doing"
-                    value={entry.currentWork}
-                  />
-                  <Detail
-                    full
-                    label="What they wish they understood"
-                    value={entry.understanding}
-                  />
-                  <Detail
-                    full
-                    label="Why THIP interests them"
-                    value={entry.interest}
-                  />
+                  {entry.sessionType === "think-lab" ? (
+                    <>
+                      <Detail label="Email" value={entry.email} />
+                      <Detail
+                        label="Which best describes you"
+                        value={entry.description}
+                      />
+                      <Detail
+                        full
+                        label="What made you curious about The Think Lab"
+                        value={entry.curiosity || entry.interest}
+                      />
+                      <Detail
+                        full
+                        label="Something you'd love us to explore"
+                        value={entry.explore}
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <Detail label="Describes them" value={entry.description} />
+                      <Detail label="Age range" value={entry.ageRange} />
+                      <Detail label="Country" value={entry.country} />
+                      <Detail label="State / Region" value={entry.stateRegion} />
+                      <Detail label="City / Town" value={entry.cityTown} />
+                      <Detail label="Industry" value={entry.industry} />
+                      <Detail label="Education" value={entry.education} />
+                      <Detail
+                        label="Field of study"
+                        value={entry.fieldOfStudy}
+                      />
+                      <Detail
+                        label="In-person willing"
+                        value={entry.inPersonWilling}
+                      />
+                      <Detail label="Heard about via" value={entry.hearAbout} />
+                      <Detail
+                        full
+                        label="Currently building / doing"
+                        value={entry.currentWork}
+                      />
+                      <Detail
+                        full
+                        label="What they wish they understood"
+                        value={entry.understanding}
+                      />
+                      <Detail
+                        full
+                        label="Why THIP interests them"
+                        value={entry.interest}
+                      />
+                    </>
+                  )}
                 </div>
               ) : null}
             </div>
@@ -205,7 +243,7 @@ function Detail({
   full = false,
 }: {
   label: string;
-  value: string | null;
+  value?: string | null;
   full?: boolean;
 }) {
   return (

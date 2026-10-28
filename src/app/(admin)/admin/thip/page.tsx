@@ -3,7 +3,7 @@ import { ThipAdminClient } from "@/components/admin/ThipAdminClient";
 import { can } from "@/lib/auth/permissions";
 import { getSessionUser } from "@/lib/auth/session";
 
-export const metadata = { title: "THIP Waitlist" };
+export const metadata = { title: "THIP Submissions" };
 
 export default async function AdminThipPage() {
   const user = await getSessionUser();
@@ -13,7 +13,7 @@ export default async function AdminThipPage() {
   return (
     <div>
       <h1 className="mb-8 font-display text-4xl tracking-[-0.04em]">
-        THIP Waitlist
+        THIP Submissions
       </h1>
       <ThipAdminClient />
     </div>

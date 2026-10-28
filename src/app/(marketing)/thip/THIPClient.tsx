@@ -1,20 +1,76 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import Link from "next/link";
+import { FormEvent, useEffect, useState, type ReactNode } from "react";
+import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal, Stagger, StaggerItem } from "@/components/ui/Reveal";
 import { Rule } from "@/components/ui/Rule";
 import { Shell } from "@/components/ui/Shell";
 
-const SESSION_LINKS = {
-  private: "https://tix.africa/discover/thip2",
-  open: "https://tix.africa/discover/thip1",
-} as const;
+const OPEN_SESSION_LINK = "https://tix.africa/discover/thip1";
 
 const sessionLinkClass =
   "mt-4 inline-block border border-cream px-4 py-2 text-xs uppercase tracking-wider transition-colors duration-200 hover:bg-cream hover:text-black";
 
+const DESCRIBES_YOU = [
+  "I run a business or lead a team",
+  "I'm a creator, talent or public figure",
+  "I'm building my professional career",
+  "I'm simply curious",
+] as const;
+
 export default function THIPClient() {
+  const [status, setStatus] = useState<string | null>(null);
+  const [pending, setPending] = useState(false);
+  const [modalOpen, setModalOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  useEffect(() => {
+    document.body.classList.toggle("thip-modal-open", modalOpen);
+    return () => document.body.classList.remove("thip-modal-open");
+  }, [modalOpen]);
+
+  function openModal() {
+    setSubmitted(false);
+    setStatus(null);
+    setModalOpen(true);
+  }
+
+  async function onSubmit(e: FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+    setPending(true);
+    setStatus(null);
+    const form = e.currentTarget;
+    const data = new FormData(form);
+
+    try {
+      const res = await fetch("/api/thip", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          formType: "think-lab",
+          name: data.get("name"),
+          email: data.get("email"),
+          description: data.get("description"),
+          curiosity: data.get("curiosity"),
+          explore: data.get("explore"),
+        }),
+      });
+      const json = (await res.json()) as { message: string };
+      if (res.ok) {
+        form.reset();
+        setSubmitted(true);
+      } else {
+        setStatus(json.message);
+      }
+    } catch {
+      setStatus("Something went wrong. Please email us directly.");
+    } finally {
+      setPending(false);
+    }
+  }
+
   return (
     <>
       <Shell className="flex flex-col pt-10 pb-12 max-md:pt-8 max-md:pb-10">
@@ -55,15 +111,12 @@ export default function THIPClient() {
       <Reveal as="section" className="py-16 max-md:py-12">
         <Shell>
           <Stagger>
-            {/* <StaggerItem>
-              <h2 className="font-display text-[clamp(27px,7vw,100px)] font-semibold leading-[0.9] tracking-[-0.055em]">
-                Open Call
-              </h2>
-            </StaggerItem> */}
             <StaggerItem>
               <p className="mt-6 max-w-[720px] text-[19px] leading-[1.55]">
                 We are bringing together people at different stages of their
-                lives and careers to take part in <span className="font-[500]">The Human Intelligence Project</span>.
+                lives and careers to take part in{" "}
+                <span className="font-[500]">The Human Intelligence Project</span>
+                .
               </p>
             </StaggerItem>
             <StaggerItem>
@@ -94,8 +147,8 @@ export default function THIPClient() {
 
       <Reveal as="section" className="bg-black py-16 text-cream max-md:py-12">
         <Shell>
-          <h2 className="font-display text-[clamp(52px,7vw,100px)] font-normal leading-[0.9] tracking-[-0.055em]">
-            Two Groups, Different Days
+          <h2 className="font-display text-[clamp(36px,6vw,88px)] font-normal leading-[0.9] tracking-[-0.055em]">
+            Request Access to THIP Think Lab
           </h2>
           <Stagger className="mt-[70px] grid grid-cols-2 gap-[60px] border-t border-white/20 max-md:grid-cols-1">
             <StaggerItem className="min-h-[240px] border-white/20 py-[30px] pr-[30px] max-md:min-h-0 max-md:border-r-0 max-md:border-b max-md:py-7 max-md:pr-0">
@@ -108,7 +161,7 @@ export default function THIPClient() {
                 exercises. These sessions will be documented.
               </p>
               <a
-                href={SESSION_LINKS.open}
+                href={OPEN_SESSION_LINK}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={sessionLinkClass}
@@ -121,55 +174,146 @@ export default function THIPClient() {
             </StaggerItem>
             <StaggerItem className="min-h-[240px] border-white/20 py-[30px] pr-[30px] max-md:min-h-0 max-md:border-r-0 max-md:border-b max-md:py-7 max-md:pr-0">
               <h3 className="font-display text-[28px] font-normal leading-tight">
-                Private Sessions
+                Curious About The Think Lab?
               </h3>
               <p className="mt-4 text-sm leading-relaxed">
-                For public figures, CEOs and business owners. Closed-room
-                sessions. Case studies. Conversations. Real situations.
-                Participants will not be recorded.
+                Wondering what we&apos;re bringing people together to explore?
               </p>
-              <a
-                href={SESSION_LINKS.private}
-                target="_blank"
-                rel="noopener noreferrer"
+              <p className="mt-4 text-sm leading-relaxed">
+                The Think Lab is an intimate, interactive experience exploring
+                branding, perception, reputation and the decisions that shape
+                how people and businesses are seen, understood and valued.
+              </p>
+              <p className="mt-4 text-sm leading-relaxed">
+                If you&apos;re curious, we&apos;d love to know what interests
+                you.
+              </p>
+              <button
+                type="button"
+                onClick={openModal}
                 className={sessionLinkClass}
               >
-                Get tickets
-              </a>
-              <p className="mt-4 text-xs text-cream/60">
-                Registration closes 4th November 2026.
-              </p>
+                Tell us you&apos;re curious
+              </button>
             </StaggerItem>
           </Stagger>
         </Shell>
       </Reveal>
 
-      {/* <Reveal as="section" className="py-16 max-md:py-12">
-        <Shell>
-          <Stagger>
-            <StaggerItem>
-              <h2 className="font-display text-[clamp(52px,7vw,100px)] font-normal leading-[0.9] tracking-[-0.055em]">
-                I&apos;m curious
+      {modalOpen && (
+        <>
+          <div
+            className="fixed inset-0 z-40 bg-black/50 transition-opacity duration-300"
+            onClick={() => setModalOpen(false)}
+          />
+          <div className="fixed inset-0 z-50 flex flex-col overflow-y-auto bg-paper">
+            <div className="flex items-center justify-between border-b border-line px-4 py-4 max-md:px-4">
+              <h2 className="font-display text-[32px] font-normal leading-tight">
+                Tell Us a Little About Yourself
               </h2>
-            </StaggerItem>
-            <StaggerItem>
-              <p className="mt-6 max-w-[720px] text-[19px] leading-[1.55]">
-                If this has made you curious, that&apos;s enough for now. Leave us a
-                few details about yourself and we will be in touch.
-              </p>
-            </StaggerItem>
-            <StaggerItem>
-              <p className="mt-4 max-w-[720px] text-[14px] leading-[1.6] text-muted">
-                Registration of interest closes 10th October 2026. The Human
-                Intelligence Project is a paid experience. Joining the waitlist
-                requires no payment or commitment. Full participation details,
-                including dates, fees and what comes next, will be shared with
-                waitlist members after registration closes.
-              </p>
-            </StaggerItem>
-          </Stagger>
-        </Shell>
-      </Reveal> */}
+              <button
+                type="button"
+                onClick={() => setModalOpen(false)}
+                className="text-sm uppercase tracking-wider hover:opacity-70"
+              >
+                Close
+              </button>
+            </div>
+
+            <div className="flex-1 overflow-y-auto">
+              {submitted ? (
+                <Shell className="flex max-w-2xl flex-col items-start py-16 max-md:py-12">
+                  <Eyebrow>You&apos;re on the list</Eyebrow>
+                  <h3 className="mt-6 font-display text-[clamp(36px,5vw,56px)] font-normal leading-[0.95] tracking-[-0.055em]">
+                    Thanks for telling us you&apos;re curious.
+                  </h3>
+                  <p className="mt-6 max-w-[520px] text-[17px] leading-[1.6]">
+                    We&apos;ll be in touch using the email you shared.
+                  </p>
+                  <Link href="/" className="mt-10 inline-block">
+                    <Button className="w-max bg-transparent">
+                      Back to Home
+                    </Button>
+                  </Link>
+                </Shell>
+              ) : (
+                <Shell className="max-w-3xl py-16 max-md:py-12">
+                  <form
+                    className="grid grid-cols-1 gap-x-10 gap-y-8"
+                    onSubmit={onSubmit}
+                  >
+                    <p className="text-[19px] leading-[1.55]">
+                      We&apos;re glad you&apos;re curious. A few questions to
+                      help us understand what brings you here.
+                    </p>
+
+                    <Field label="1. What's your name?">
+                      <input
+                        name="name"
+                        required
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field label="2. What's your email address?">
+                      <input
+                        name="email"
+                        type="email"
+                        required
+                        className="w-full border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <fieldset>
+                      <legend className="block text-xs uppercase tracking-wider text-muted font-[700]">
+                        3. Which best describes you?
+                      </legend>
+                      <div className="mt-4 space-y-3">
+                        {DESCRIBES_YOU.map((option) => (
+                          <label
+                            key={option}
+                            className="flex items-start gap-3 text-[16px] leading-[1.5]"
+                          >
+                            <input
+                              type="radio"
+                              name="description"
+                              value={option}
+                              required
+                              className="mt-1"
+                            />
+                            <span>{option}</span>
+                          </label>
+                        ))}
+                      </div>
+                    </fieldset>
+                    <Field label="4. What made you curious about The Think Lab?">
+                      <textarea
+                        name="curiosity"
+                        required
+                        className="min-h-[80px] w-full resize-y border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Field label="5. Is there something you'd love us to explore?">
+                      <textarea
+                        name="explore"
+                        className="min-h-[80px] w-full resize-y border-0 border-b border-ink bg-transparent py-3 outline-none"
+                      />
+                    </Field>
+                    <Button
+                      type="submit"
+                      disabled={pending}
+                      className="w-max bg-transparent disabled:opacity-50"
+                    >
+                      {pending ? "Submitting…" : "Submit"}
+                    </Button>
+                    <div className="min-h-5 text-xs leading-relaxed" role="status">
+                      {status}
+                    </div>
+                  </form>
+                </Shell>
+              )}
+            </div>
+          </div>
+        </>
+      )}
 
       <Rule />
 
@@ -185,6 +329,23 @@ export default function THIPClient() {
   );
 }
 
+function Field({
+  label,
+  children,
+}: {
+  label: string;
+  children: ReactNode;
+}) {
+  return (
+    <label className="block w-full">
+      <span className="block text-xs uppercase tracking-wider text-muted font-[700]">
+        {label}
+      </span>
+      {children}
+    </label>
+  );
+}
+
 function CountdownTimer({ target }: { target: string }) {
   const [remaining, setRemaining] = useState<number | null>(null);
 
@@ -197,7 +358,6 @@ function CountdownTimer({ target }: { target: string }) {
   }, [target]);
 
   if (remaining === null) {
-    // avoids a 0 -> real value flash before the first client tick
     return <div className="mt-6 h-18" aria-hidden />;
   }
 

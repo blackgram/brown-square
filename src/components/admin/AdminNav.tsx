@@ -14,7 +14,7 @@ const links = [
   { href: "/admin/site", label: "Site", permission: "site_manager" as const },
   {
     href: "/admin/thip",
-    label: "THIP Waitlist",
+    label: "THIP Submissions",
     permission: "thip_manager" as const,
   },
   {

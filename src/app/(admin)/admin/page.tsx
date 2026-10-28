@@ -32,8 +32,8 @@ export default async function AdminDashboardPage() {
     },
     {
       href: "/admin/thip",
-      title: "THIP Waitlist",
-      body: "Review registrations for The Human Intelligence Project.",
+      title: "THIP Submissions",
+      body: "Review Think Lab and waitlist responses for The Human Intelligence Project.",
       show: can(user, "thip_manager"),
     },
     {

@@ -37,6 +37,10 @@ body {
   overflow-x: hidden;
 }
 
+body.thip-modal-open {
+  overflow: hidden;
+}
+
 ::selection {
   background: var(--accent);
   color: var(--paper);
