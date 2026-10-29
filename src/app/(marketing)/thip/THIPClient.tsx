@@ -156,9 +156,13 @@ export default function THIPClient() {
                 Open Session
               </h3>
               <p className="mt-4 text-sm leading-relaxed">
-                For emerging talents and creators. A more participatory
-                experience involving simulations, real-life scenarios and
-                exercises. These sessions will be documented.
+                What makes people recognise, trust and value you or your
+                business? The Think Lab brings real-life situations, challenging
+                questions and shared perspectives into one room to explore how
+                reputation, perception and opportunities are shaped.
+              </p>
+              <p className="mt-4 text-sm leading-relaxed">
+                This session will be documented.
               </p>
               <a
                 href={OPEN_SESSION_LINK}
