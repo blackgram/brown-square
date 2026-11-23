@@ -1,11 +1,38 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { JsonLd } from "@/components/seo/JsonLd";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Shell } from "@/components/ui/Shell";
+import { site } from "@/content/site";
+import {
+  THINK_LAB_001_PATH,
+  THIP_PATH,
+  thinkLab001Description,
+  thinkLab001Image,
+} from "@/content/thip";
+import { getSiteUrl } from "@/lib/site/url";
+
+const title = "Think Lab 001: What Makes Your Brand Valuable?";
 
 export const metadata: Metadata = {
-  title: "What Makes Your Brand Valuable?",
+  title,
+  description: thinkLab001Description,
+  alternates: { canonical: THINK_LAB_001_PATH },
+  openGraph: {
+    title,
+    description: thinkLab001Description,
+    url: THINK_LAB_001_PATH,
+    siteName: site.fullName,
+    type: "article",
+    images: [{ url: thinkLab001Image.src, alt: thinkLab001Image.alt }],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title,
+    description: thinkLab001Description,
+    images: [thinkLab001Image.src],
+  },
 };
 
 const gallery = [
@@ -40,8 +67,54 @@ const gallery = [
 ] as const;
 
 export default function ThinkLab001Page() {
+  const siteUrl = getSiteUrl();
+  const pageUrl = `${siteUrl}${THINK_LAB_001_PATH}`;
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Event",
+        name: title,
+        description: thinkLab001Description,
+        startDate: "2026-11-07",
+        eventAttendanceMode: "https://schema.org/OfflineEventAttendanceMode",
+        location: {
+          "@type": "Place",
+          name: "Lagos",
+          address: {
+            "@type": "PostalAddress",
+            addressLocality: "Lagos",
+            addressCountry: "NG",
+          },
+        },
+        image: `${siteUrl}${thinkLab001Image.src}`,
+        url: pageUrl,
+        organizer: {
+          "@type": "Organization",
+          name: "The Human Intelligence Project",
+          url: `${siteUrl}${THIP_PATH}`,
+        },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: siteUrl },
+          {
+            "@type": "ListItem",
+            position: 2,
+            name: "The Human Intelligence Project",
+            item: `${siteUrl}${THIP_PATH}`,
+          },
+          { "@type": "ListItem", position: 3, name: title, item: pageUrl },
+        ],
+      },
+    ],
+  };
+
   return (
     <article className="bg-paper pb-20 pt-12 text-ink max-md:pt-8">
+      <JsonLd data={jsonLd} />
       <Shell>
         <Link
           href="/thip"

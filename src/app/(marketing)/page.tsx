@@ -57,14 +57,15 @@ export default async function HomePage() {
 
       <Reveal as="section" className="bg-ink text-paper">
         <div className="grid grid-cols-2 max-md:grid-cols-1">
-          <div className="relative min-h-[420px] overflow-hidden max-md:min-h-[280px] max-md:order-2">
+          <div className="relative max-md:order-2">
             <Image
               src="/home/buildCulture.JPG"
               alt="A warm gathering in conversation around a shared table"
-              fill
+              width={4608}
+              height={3072}
               sizes="(max-width: 768px) 100vw, 50vw"
-              className="object-cover"
-              loading="eager"
+              className="h-auto w-full"
+              priority
             />
           </div>
           <div className="flex flex-col justify-center px-8 py-16 max-md:px-4 max-md:py-12 md:px-16 lg:px-20">

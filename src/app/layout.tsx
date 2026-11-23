@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { DM_Sans, Manrope } from "next/font/google";
 import { site } from "@/content/site";
+import { getSiteUrl } from "@/lib/site/url";
 import "./globals.css";
 
 const dmSans = DM_Sans({
@@ -16,6 +17,7 @@ const manrope = Manrope({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(getSiteUrl()),
   title: {
     default: site.fullName,
     template: `%s — ${site.fullName}`,

@@ -6,9 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { Eyebrow } from "@/components/ui/Eyebrow";
 import { Reveal } from "@/components/ui/Reveal";
 import { Shell } from "@/components/ui/Shell";
-
-const RESERVATION_URL =
-  "https://tix.africa/discover/the-elements-of-branding-by-thip/checkout?step=tickets";
+import { RESERVATION_URL } from "@/content/thip";
 
 const EARLY_BIRD_CLOSES = "2026-12-13T23:59:59";
 
