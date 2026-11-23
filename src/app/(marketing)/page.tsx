@@ -46,9 +46,9 @@ export default async function HomePage() {
 
       <Rule />
 
-      <Reveal as="section" className="py-14 max-md:py-12">
+      <Reveal as="section" className="py-20 max-md:py-16">
         <Shell>
-          <p className="m-0 max-w-[1200px] font-display text-[clamp(30px,4vw,60px)] leading-[1.08] tracking-[-0.045em]">
+          <p className="m-0 max-w-[1200px] font-display text-[clamp(26px,3.2vw,48px)] leading-[1.18] tracking-[-0.04em]">
             Most agencies split creative instinct and commercial rigour between
             two different departments. BrownSquare brings them into one room.
           </p>
