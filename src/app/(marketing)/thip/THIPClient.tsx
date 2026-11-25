@@ -388,7 +388,7 @@ function ReserveLink({
       rel="noopener noreferrer"
       className={`inline-flex w-max items-center border px-5 py-3.5 text-[14px] transition-colors duration-200 ${tones} ${className}`}
     >
-      Reserve your seat now
+      Click here to reserve your seat.
     </a>
   );
 }

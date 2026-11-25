@@ -2,7 +2,7 @@ export const THIP_PATH = "/thip";
 export const THINK_LAB_001_PATH = "/thip/think-lab-001";
 
 export const RESERVATION_URL =
-  "https://tix.africa/discover/the-elements-of-branding-by-thip/checkout?step=tickets";
+  "https://tix.africa/discover/the-elements-of-branding-by-thip";
 
 export const thipDescription =
   "The Human Intelligence Project is a Think Lab by BrownSquare Insight. Question what you know, and reserve a seat for The Elements of Branding on 30 January 2027.";
